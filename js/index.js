@@ -2,61 +2,33 @@ window.onload=function(){
 	
 	// 随机位置
 	function randomPosition(node){
-		var rn = parseInt(415*Math.random());
-		node.style.left=rn+'px';
+		var scrWidth = window.innerWidth;
+		var positionNum=parseInt(scrWidth*Math.random());
+		node.style.left=positionNum+'px';
+		// console.log(positionNum)
 	}
 	// 随机颜色
 	function randomColor(node){
-		var fontColor = [
-			{
-				'hex':'#FFFF66',
-				'color':'yellow'
-			},
-			{
-				'hex':'#33ff33',
-				'color':'green'
-			},
-			{
-				'hex':'#ff33cc',
-				'color':'pink'
-			},
-			{
-				'hex':'#48eeee',
-				'color':'blue'
-			},
-			{
-				'hex':'#ff6060',
-				'color':'fleshcolor'
-			},
-			{
-				'hex':'#fc9202',
-				'color':'orange'
-			},
-			{
-				'hex':'#fd1a1a',
-				'color':'red'
-			},
-			{
-				'hex':'#b71ffe',
-				'color':'violet'
-			}
-		];
-		var colorNum = Math.floor(parseInt(8*Math.random()));
-		var colorName = fontColor[colorNum].color;
-		node.style.color = fontColor[colorNum].hex;
+		var fontColor = ['2b71af','6e3989','12bbe8','12cc8b','444e96','a0dc26','c3087b','e32322','e86121','ef8d20','f5e73c','fbc51b'];
+		// '#fb0d34','#8f1034','ea809e','#e33316','#e33316','#dc0b10','#8a3c9b','#f4b2e3','#d644f5','#f907a1','#f520cb'
+		
+		
+		var colorNum = Math.floor(parseInt(12*Math.random()));
+		var colorName = fontColor[colorNum];
+		// node.style.background = fontColor[colorNum];
 		clickInk(node,colorName);
-		// console.log(node);
+		// console.log(node,colorName);
 	}
 	// randomColor();
 	
 	// 生成文字
 	function Shengchengtext(){
 		var textbox=document.getElementById('Tianchong');
-		var node = document.createElement('b')
+		var node = document.createElement('div')
 		;
-		var nodeText = document.createTextNode("蔡纳叶");
-		node.setAttribute('class','shename')
-		node.appendChild(nodeText);
+		// var nodeText = document.createTextNode("蔡纳叶");
+		node.setAttribute('class','backColor')
+		// node.appendChild(nodeText);
 		textbox.appendChild(node);
 		randomPosition(node);
 		randomColor(node);
@@ -64,12 +36,12 @@ window.onload=function(){
 		
 		// console.log(typeof this);
 	}
-	Shengchengtext();
+	// Shengchengtext();
 	// 生成时间
 	function shengchengTime(){
-		window.setInterval(Shengchengtext,1000)
+		window.setInterval(Shengchengtext,1500);
 	}
-	shengchengTime();
+	// shengchengTime();
 	// 删除多余文字
 	function deletText(n){
 		
@@ -89,36 +61,55 @@ window.onload=function(){
 			// console.log(e.screenX,e.screenY)
 		}
 	}
-	// 设置星空图片位置
-	function setPosition(imgX,imgY,obj){
-		if(imgX<=0){
-			imgX=0;
-		}
-		if(imgY<=0){
-			imgY=0;	
-		}
-		obj.style.backgroundPosition='-'+imgX+'px -'+imgY+'px';
-		console.log(imgX,imgY)
-	}
 	// 生成墨点
 	function shengchengInk(X,Y,imgs){
 		var InkBox = document.getElementById('Inkbox');
-		var Inks = document.createElement('p');
-		var topY = (Y-70);
-		var leftX = (X-70);
+		var Inks = document.createElement('img');
+		var topY = (Y-100);
+		var leftX = (X-100);
 		var winWidth = window.innerWidth;
 		var winHeight = window.innerHeight;
 		Inks.setAttribute('class','Ink');
-		// Inks.setAttribute('src','./img/'+imgs+'.png');
+		Inks.setAttribute('src','img/'+imgs+'.png');
 		InkBox.appendChild(Inks);
 		Inks.style.top=topY+'px';
 		Inks.style.left=leftX+'px';
-		var aa='123'
-		
 		Inks.style.backgroundSize=winWidth+'px';
-		setPosition(leftX,topY,Inks)
-		console.log("123456");
+		// console.log("123456");
 	}
 
+	// 我想说的话
+	function Mysay(){
+		var sayText=document.getElementById("dis");
+		var nextText=sayText.nextElementSibling;
+		var sayBox=document.getElementById('MySay');
+		if(nextText){
+			sayText.setAttribute('id','');
+			nextText.setAttribute('id','dis');
+		}else{
+			clearInterval(time);
+			var Ido=document.createElement('p');
+			var IdoBut=document.createElement('div');
+			Ido.setAttribute('id','IdoText');
+			IdoBut.setAttribute('id','IdoBut');
+			Ido.innerHTML='你愿意吗？';
+			IdoBut.innerHTML='愿意';
+			sayBox.appendChild(Ido);
+			sayBox.appendChild(IdoBut);
+			IdoClick(IdoBut,sayBox);
+			console.log("false");
+		}
+	}
+	var time=setInterval(Mysay,5000);
 	
+	function IdoClick(obj,box){
+		obj.onclick=function(){
+			box.setAttribute('id','Opacity');
+			var fun = function(){
+				box.style.display='none';
+				setTimeout(shengchengTime,2000);
+			}
+			setTimeout(fun,1900);
+		}
+	}
 }()
