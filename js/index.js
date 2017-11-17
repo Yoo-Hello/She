@@ -1,4 +1,6 @@
 window.onload=function(){
+	var time=setInterval(Mysay,5000);
+	var musicTime = setTimeout(backgroundMusic,5000)
 	
 	// 随机位置
 	function randomPosition(node){
@@ -100,7 +102,7 @@ window.onload=function(){
 			console.log("false");
 		}
 	}
-	var time=setInterval(Mysay,5000);
+	
 	
 	function IdoClick(obj,box){
 		obj.onclick=function(){
@@ -111,5 +113,11 @@ window.onload=function(){
 			}
 			setTimeout(fun,1900);
 		}
+	}
+
+	// 控制背景音乐
+	function backgroundMusic(){
+		var BMusic = document.getElementById('music');
+		BMusic.play();
 	}
 }()
