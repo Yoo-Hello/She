@@ -10,9 +10,15 @@
 </head>
 <body>
 	<content>
-		<audio loop="loop" id="music">
-			<source src="audio/Kim Taylor - I Am You.mp3" type="audio/mpeg">
+		<audio loop="loop" id="bgm1">
+			<source src="audio/bgm1.mp3" type="audio/mpeg">
+			<source src="audio/bgm1.ogg" type="audio/ogg">
 		</audio>
+		<audio loop="loop" id="bgm2">
+			<source src="audio/bgm2.mp3" type="audio/mpeg">
+			<source src="audio/bgm2.ogg" type="audio/ogg">
+		</audio>
+
 		<div id="MySay">
 			<ul>
 				<li class="SayText" id="dis"></li>
@@ -21,7 +27,17 @@
 				<li class="SayText">三四五六七</li>
 			</ul>
 		</div>
-		<div id="Tianchong"></div>
+		<div id="Tianchong">
+			<b id="start">
+				开始游戏
+			</b>
+			<div id="answer">
+				<p id="answerBut" state="true">回答问题</p>
+				<div id="answerWindow">
+					
+				</div>
+			</div>
+		</div>
 		<div id="Inkbox"></div>
 		<img src="img/woman.png">
 	</content>

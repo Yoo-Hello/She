@@ -1,6 +1,36 @@
 window.onload=function(){
-	var time=setInterval(Mysay,5000);
-	var musicTime = setTimeout(backgroundMusic,5000)
+	// var time=setInterval(Mysay,5000);
+	// var musicTime = setTimeout(backgroundMusic,5000);
+	// 点击开始
+	function start(){
+		var startBut = document.getElementById('start');
+		startBut.onclick = function(){
+			this.style.display = "none";
+			shengchengTime();
+			// playBGM1();
+			answer();
+		}
+	}
+	start();
+	// 生成时间
+	function shengchengTime(){
+		window.setInterval(Shengchengtext,1500);
+	}
+	// shengchengTime();
+
+	// 生成下落
+	function Shengchengtext(){
+		var textbox=document.getElementById('Tianchong');
+		var node = document.createElement('div')
+		;
+		node.setAttribute('class','backColor')
+		// node.appendChild(nodeText);
+		textbox.appendChild(node);
+		randomPosition(node);
+		randomColor(node);
+		deletText(node);
+	}
+	// Shengchengtext();
 	
 	// 随机位置
 	function randomPosition(node){
@@ -23,27 +53,6 @@ window.onload=function(){
 	}
 	// randomColor();
 	
-	// 生成文字
-	function Shengchengtext(){
-		var textbox=document.getElementById('Tianchong');
-		var node = document.createElement('div')
-		;
-		// var nodeText = document.createTextNode("蔡纳叶");
-		node.setAttribute('class','backColor')
-		// node.appendChild(nodeText);
-		textbox.appendChild(node);
-		randomPosition(node);
-		randomColor(node);
-		deletText(node);
-		
-		// console.log(typeof this);
-	}
-	// Shengchengtext();
-	// 生成时间
-	function shengchengTime(){
-		window.setInterval(Shengchengtext,1500);
-	}
-	// shengchengTime();
 	// 删除多余文字
 	function deletText(n){
 		
@@ -54,6 +63,7 @@ window.onload=function(){
 		}
 		window.setInterval(fun,500);
 	}
+
 	// 点击生成墨点事件
 	function clickInk(n,cm){
 		n.onclick=function(event){
@@ -63,6 +73,7 @@ window.onload=function(){
 			// console.log(e.screenX,e.screenY)
 		}
 	}
+
 	// 生成墨点
 	function shengchengInk(X,Y,imgs){
 		var InkBox = document.getElementById('Inkbox');
@@ -78,6 +89,26 @@ window.onload=function(){
 		Inks.style.left=leftX+'px';
 		Inks.style.backgroundSize=winWidth+'px';
 		// console.log("123456");
+	}
+
+	// 回答问题事件
+	function answer(){
+		var answerBox = document.getElementById('answer');
+		var answerbut = document.getElementById('answerBut');
+		var answerwindow = document.getElementById('answerWindow')
+		answerBox.style.display='block';
+		answerbut.onclick = function(){
+			var state = this.getAttribute('state');
+			if(state == 'true'){
+				this.setAttribute('state','false');
+				console.log('123');
+			}else{
+				this.setAttribute('state','true');
+				console.log('456')
+			}
+			console.log(state);
+		}
+		// console.log(answerBox)
 	}
 
 	// 我想说的话
@@ -115,9 +146,13 @@ window.onload=function(){
 		}
 	}
 
-	// 控制背景音乐
-	function backgroundMusic(){
-		var BMusic = document.getElementById('music');
+	// 播放背景音乐
+	function playBGM1(){
+		var BMusic = document.getElementById('bgm1');
+		BMusic.play();
+	}
+	function playBGM2(){
+		var BMusic = document.getElementById('bgm2');
 		BMusic.play();
 	}
 }()
