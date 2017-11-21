@@ -71,18 +71,30 @@ content>img{
 }
 #Tianchong #answer #answerWindow{
 	width: 100%;
-	height: 100%;
-	background: black;
+	height: 0%;
+	background: #111;
 	position: absolute;
+	bottom: 0;
 	z-index: 98;
-	display: none;
 }
-@keyframes upname{
-	from{
-		top:-50px;
-	}to{
-		top:1000px;
-	}
+#Tianchong #answer #answerWindow p{
+	color: #fff;
+	position: absolute;
+	top: 30%;
+}
+#Tianchong #answer #answerWindow form{
+	position: absolute;
+	top: 50%;
+}
+#Tianchong #answer #answerWindow form input{
+	position: absolute;
+	margin:0 auto;
+}
+#Tianchong #answer .open{
+	animation: open 0.5s ease-in;
+}
+#Tianchong #answer .shrink{
+	animation: shrink 0.5s ease-in;
 }
 #Inkbox{
 	width: 100%;
@@ -119,17 +131,7 @@ content>img{
 #MySay ul #dis{
 	animation: Display 5s linear;
 }
-@keyframes Display{
-	20%{
-		opacity: 1;
-	}
-	90%{
-		opacity: 1;
-	}
-	100%{
-		opacity: 0;
-	}
-}
+
 #IdoText{
 	width: 100%;
 	color: #fff;
@@ -139,14 +141,7 @@ content>img{
 	text-align: center;
 	animation: IdoShow 1s linear;
 }
-@keyframes IdoShow{
-	from{
-		opacity: 0;
-	}
-	to{
-		opacity: 1;
-	}
-}
+
 #IdoBut{
 	background: #fff;
 	width: 30%;
@@ -160,6 +155,43 @@ content>img{
 	padding:5px 0;
 	animation: butDisplay 4s linear;
 }
+
+#Opacity{
+	width:100%;
+	height:100%;
+	position: relative;
+	background: #111;
+	z-index: 100;
+	opacity: 0;
+	animation: MySayDisplay 2s linear;
+}
+
+@keyframes upname{
+	from{
+		top:-50px;
+	}to{
+		top:1000px;
+	}
+}
+@keyframes Display{
+	20%{
+		opacity: 1;
+	}
+	90%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+@keyframes IdoShow{
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+	}
+}
 @keyframes butDisplay{
 	0%{
 		opacity: 0;
@@ -171,20 +203,26 @@ content>img{
 		opacity: 1;
 	}
 }
-#Opacity{
-	width:100%;
-	height:100%;
-	position: relative;
-	background: #111;
-	z-index: 100;
-	opacity: 0;
-	animation: MySayDisplay 2s linear;
-}
 @keyframes MySayDisplay{
 	from{
 		opacity: 1;
 	}
 	to{
 		opacity: 0;
+	}
+}
+@keyframes open{
+	from{
+		height: 0%;
+	}to{
+		height: 100%;
+	}
+}
+
+@keyframes shrink{
+	from{
+		height: 100%;
+	}to{
+		height: 0%;
 	}
 }

@@ -1,5 +1,5 @@
 window.onload=function(){
-	// var time=setInterval(Mysay,5000);
+	var time;
 	// var musicTime = setTimeout(backgroundMusic,5000);
 	// 点击开始
 	function start(){
@@ -7,7 +7,7 @@ window.onload=function(){
 		startBut.onclick = function(){
 			this.style.display = "none";
 			shengchengTime();
-			// playBGM1();
+			playBGM('play','bgm1');
 			answer();
 		}
 	}
@@ -99,16 +99,20 @@ window.onload=function(){
 		answerBox.style.display='block';
 		answerbut.onclick = function(){
 			var state = this.getAttribute('state');
-			if(state == 'true'){
-				this.setAttribute('state','false');
-				console.log('123');
+			var name = prompt('她是谁？','');
+			if(name == '蔡纳叶'){
+				playBGM('pause','bgm1');
+				document.getElementById('MySay').style.display = 'block';
+				time=setInterval(Mysay,5000);
 			}else{
-				this.setAttribute('state','true');
-				console.log('456')
+				alert('回答错了');
 			}
-			console.log(state);
 		}
 		// console.log(answerBox)
+	}
+
+	function problem(){
+
 	}
 
 	// 我想说的话
@@ -116,6 +120,7 @@ window.onload=function(){
 		var sayText=document.getElementById("dis");
 		var nextText=sayText.nextElementSibling;
 		var sayBox=document.getElementById('MySay');
+		playBGM('play','bgm2');
 		if(nextText){
 			sayText.setAttribute('id','');
 			nextText.setAttribute('id','dis');
@@ -130,7 +135,6 @@ window.onload=function(){
 			sayBox.appendChild(Ido);
 			sayBox.appendChild(IdoBut);
 			IdoClick(IdoBut,sayBox);
-			console.log("false");
 		}
 	}
 	
@@ -140,19 +144,28 @@ window.onload=function(){
 			box.setAttribute('id','Opacity');
 			var fun = function(){
 				box.style.display='none';
-				setTimeout(shengchengTime,2000);
 			}
 			setTimeout(fun,1900);
 		}
 	}
 
 	// 播放背景音乐
-	function playBGM1(){
-		var BMusic = document.getElementById('bgm1');
-		BMusic.play();
-	}
-	function playBGM2(){
-		var BMusic = document.getElementById('bgm2');
-		BMusic.play();
+	function playBGM(control,music){
+		var BMusic1 = document.getElementById('bgm1');
+		var BMusic2 = document.getElementById('bgm2');
+		if(control=='play'){
+			if(music == 'bgm1'){
+				BMusic1.play();
+			}else if(music == 'bgm2'){
+				BMusic2.play();
+			}
+		}
+		if(control == 'pause'){
+			if(music == 'bgm1'){
+				BMusic1.pause();
+			}else if(music == 'bgm2'){
+				BMusic2.pause();
+			}
+		}
 	}
 }()
