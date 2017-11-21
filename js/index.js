@@ -1,6 +1,5 @@
 window.onload=function(){
 	var time;
-	// var musicTime = setTimeout(backgroundMusic,5000);
 	// 点击开始
 	function start(){
 		var startBut = document.getElementById('start');
@@ -16,42 +15,32 @@ window.onload=function(){
 	function shengchengTime(){
 		window.setInterval(Shengchengtext,1500);
 	}
-	// shengchengTime();
 
 	// 生成下落
 	function Shengchengtext(){
 		var textbox=document.getElementById('Tianchong');
 		var node = document.createElement('div')
 		;
-		node.setAttribute('class','backColor')
-		// node.appendChild(nodeText);
+		node.setAttribute('class','backColor');
 		textbox.appendChild(node);
 		randomPosition(node);
 		randomColor(node);
 		deletText(node);
 	}
-	// Shengchengtext();
 	
 	// 随机位置
 	function randomPosition(node){
 		var scrWidth = window.innerWidth;
 		var positionNum=parseInt(scrWidth*Math.random());
 		node.style.left=positionNum+'px';
-		// console.log(positionNum)
 	}
 	// 随机颜色
 	function randomColor(node){
 		var fontColor = ['2b71af','6e3989','12bbe8','12cc8b','444e96','a0dc26','c3087b','e32322','e86121','ef8d20','f5e73c','fbc51b'];
-		// '#fb0d34','#8f1034','ea809e','#e33316','#e33316','#dc0b10','#8a3c9b','#f4b2e3','#d644f5','#f907a1','#f520cb'
-		
-		
 		var colorNum = Math.floor(parseInt(12*Math.random()));
 		var colorName = fontColor[colorNum];
-		// node.style.background = fontColor[colorNum];
 		clickInk(node,colorName);
-		// console.log(node,colorName);
 	}
-	// randomColor();
 	
 	// 删除多余文字
 	function deletText(n){
@@ -70,7 +59,6 @@ window.onload=function(){
 			var e = e||window.event;
 			shengchengInk(e.clientX,e.clientY,cm);
 			n.parentNode.removeChild(n);
-			// console.log(e.screenX,e.screenY)
 		}
 	}
 
@@ -88,7 +76,6 @@ window.onload=function(){
 		Inks.style.top=topY+'px';
 		Inks.style.left=leftX+'px';
 		Inks.style.backgroundSize=winWidth+'px';
-		// console.log("123456");
 	}
 
 	// 回答问题事件
@@ -102,13 +89,17 @@ window.onload=function(){
 			var name = prompt('她是谁？','');
 			if(name == '蔡纳叶'){
 				playBGM('pause','bgm1');
+				playBGM('play','bgm2');
 				document.getElementById('MySay').style.display = 'block';
-				time=setInterval(Mysay,5000);
+				setTimeout(fun,15000)
+				function fun(){
+					time=setInterval(Mysay,8000);
+				}
+				
 			}else{
 				alert('回答错了');
 			}
 		}
-		// console.log(answerBox)
 	}
 
 	function problem(){
@@ -120,7 +111,7 @@ window.onload=function(){
 		var sayText=document.getElementById("dis");
 		var nextText=sayText.nextElementSibling;
 		var sayBox=document.getElementById('MySay');
-		playBGM('play','bgm2');
+		
 		if(nextText){
 			sayText.setAttribute('id','');
 			nextText.setAttribute('id','dis');
