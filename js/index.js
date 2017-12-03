@@ -1,5 +1,22 @@
 window.onload=function(){
 	var time;
+	// 判断网页是否加载完成
+	function webLoading(){
+		var imgLoading = document.getElementsByTagName('img');
+		var flag = 0;
+		var startInner = document.getElementById('start')
+		for(var i=0; i<imgLoading.length; i++){
+			imgLoading[i].onload = function(){
+				flag++;
+				if(flag == imgLoading.length){
+					console.log('true');
+					startInner.innerHTML = '开始游戏';
+					start();
+				}
+			}
+		}
+	}
+	webLoading();
 	// 点击开始
 	function start(){
 		var startBut = document.getElementById('start');
@@ -10,7 +27,7 @@ window.onload=function(){
 			answer();
 		}
 	}
-	start();
+	// start();
 	// 生成时间
 	function shengchengTime(){
 		window.setInterval(Shengchengtext,1500);
