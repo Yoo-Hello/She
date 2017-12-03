@@ -2,11 +2,29 @@ window.onload=function(){
 	var time;
 	// 判断网页是否加载完成
 	function webLoading(){
-		var imgLoading = document.getElementsByTagName('img');
 		var flag = 0;
+		var img = [];
+		var imgLoading = [
+			'./img/woman.png',
+			'./img/2b71af.png',
+			'./img/6e3989.png',
+			'./img/12bbe8.png',
+			'./img/12cc8b.png',
+			'./img/444e96.png',
+			'./img/a0dc26.png',
+			'./img/c3087b.png',
+			'./img/e32322.png',
+			'./img/e86121.png',
+			'./img/ef8d20.png',
+			'./img/f5e73c.png',
+			'./img/fbc51b.png',
+		]
+		
 		var startInner = document.getElementById('start')
 		for(var i=0; i<imgLoading.length; i++){
-			imgLoading[i].onload = function(){
+			img[i] = new Image();
+			img[i].src = imgLoading[i];
+			img[i].onload = function(){
 				flag++;
 				if(flag == imgLoading.length){
 					console.log('true');
