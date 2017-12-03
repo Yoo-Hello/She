@@ -12,6 +12,8 @@ window.onload=function(){
 					console.log('true');
 					startInner.innerHTML = '开始游戏';
 					start();
+				}else{
+					console.log('felse');
 				}
 			}
 		}
