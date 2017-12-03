@@ -59,14 +59,20 @@ content>img{
 	height: 100%;
 	display: none;
 }
-#Tianchong #answer p{
-	width: 100%;
+#Tianchong #answer #answerBut{
+	width: 150px;
+	height: 40px;
+	line-height: 40px;
+	background: #ccc;
+	border-radius: 5px;
 	text-align: center;
 	display: inline-block;
 	position: absolute;
-	font-size: 24px;
+	left: 50%;
+	margin-left: -75px;
+	font-size: 20px;
 	font-weight: 600;
-	top: 95%;
+	top: 85%;
 	z-index: 99;
 }
 #Tianchong #answer #answerWindow{
@@ -168,7 +174,7 @@ content>img{
 
 @keyframes upname{
 	from{
-		top:-50px;
+		top:-60px;
 	}to{
 		top:1000px;
 	}
