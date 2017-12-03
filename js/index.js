@@ -124,7 +124,7 @@ window.onload=function(){
 		answerbut.onclick = function(){
 			var state = this.getAttribute('state');
 			var name = prompt('她是谁？','');
-			if(name == '蔡纳叶'){
+			if(name == '蔡纳烨'){
 				playBGM('pause','bgm1');
 				playBGM('play','bgm2');
 				document.getElementById('MySay').style.display = 'block';
